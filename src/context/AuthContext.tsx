@@ -1,7 +1,7 @@
-import { createContext, useState, type ReactNode } from "react";
+import { createContext, useContext, useState, type ReactNode } from "react";
 
 // 1. Create the context with a default value (null)
-export const AuthContext = createContext<any>(null); 
+const AuthContext = createContext<any>(null); 
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -59,3 +59,10 @@ export default function AuthProvider({ children }: AuthProviderProps) {
     </AuthContext.Provider>
   );
 }
+
+
+export function useAuth(){
+  const context =  useContext( AuthContext);
+  
+  return context;
+};
